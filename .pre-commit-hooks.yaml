@@ -4,7 +4,7 @@
   entry: pre-commit-dune-format-dune-file -i
   language: python
   types: [file]
-  files: \(dune|dune-project)$
+  files: ^(dune|dune-project)$
   require_serial: false
   additional_dependencies: []
   minimum_pre_commit_version: 2.9.2
