@@ -5,7 +5,7 @@ Add this to your `.pre-commit-config.yaml` file:
 
 ```yaml
 - repo: https://github.com/jevinskie/pre-commit-dune-format-dune-file
-  rev: v0.1.3
+  rev: v0.1.4
   hooks:
   - id: dune-format-dune-file
 ```
