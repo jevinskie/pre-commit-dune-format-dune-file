@@ -1,0 +1,38 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61", "setuptools-scm>=8.0"]
+
+[project]
+authors = [
+  {name = "Jevin Sweval", email = "jevinsweval@gmail.com"}
+]
+classifiers = [
+  "Programming Language :: Python :: 3"
+]
+dependencies = [
+  "path",
+  "rich",
+  "pre-commit"
+]
+description = "dune format-dune-file pre-commit hook for dune and dune-project files"
+dynamic = ["version"]
+keywords = ["dune", "dune-project", "dune-file", "dune-format", "format-dune-file", "pre-commit"]
+license = {text = "BSD-2-Clause"}
+name = "pre-commit-dune-format-dune-file"
+readme = {file = 'README.md', content-type = 'text/markdown'}
+requires-python = ">=3.9"
+
+[project.scripts]
+pre-commit-dune-format-dune-file = "pre_commit_dune_format_dune_file.format:main"
+
+[project.urls]
+repository = "https://github.com/jevinskie/pre-commit-dune-format-dune-file"
+
+[tool.setuptools]
+zip-safe = true
+
+[tool.setuptools.dynamic]
+version = {attr = "pre_commit_dune_format_dune_file._version.__version__"}
+
+[tool.setuptools_scm]
+version_file = "pre_commit_dune_format_dune_file/_version.py"
