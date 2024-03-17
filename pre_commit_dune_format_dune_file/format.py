@@ -41,7 +41,11 @@ def dune_get_exe() -> Path:
     return Path(p)
 
 
-_dune_file_names: Final[tuple[Path, Path]] = (Path("dune"), Path("dune-project"))
+_dune_file_names: Final[tuple[Path, Path]] = (
+    Path("dune"),
+    Path("dune-project"),
+    Path("dune-workspace"),
+)
 
 
 def get_dune_file_path(arg: str) -> Optional[Path]:
@@ -108,7 +112,7 @@ def real_main(args: argparse.Namespace) -> int:
             orig_dune_file = get_dune_file_path(should_be_dune_file)
             if orig_dune_file is None:
                 raise TypeError(
-                    f"{should_be_dune_file} should be named either 'dune' or 'dune-project'."
+                    f"{should_be_dune_file} should be named either 'dune', 'dune-project' or 'dune-workspace'."
                 )
             log.info(f"Found a dune or dune-project file to format: '{orig_dune_file}'")
             if in_place:
