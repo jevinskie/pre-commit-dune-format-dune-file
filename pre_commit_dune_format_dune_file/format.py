@@ -8,7 +8,7 @@ import sys
 import tempfile
 import shutil
 import functools
-from typing import Optional, Final
+from typing import Final
 
 from path import Path, TempDir
 from rich.console import Console
@@ -48,7 +48,7 @@ _dune_file_names: Final[tuple[Path, Path]] = (
 )
 
 
-def get_dune_file_path(arg: str) -> Optional[Path]:
+def get_dune_file_path(arg: str) -> Path | None:
     path = Path(arg)
     if path.isfile() and path.name in _dune_file_names:
         if not path.access(os.R_OK):
@@ -107,7 +107,7 @@ def real_main(args: argparse.Namespace) -> int:
             log.warning(f"Saving {program_name} temporary files in '{d}'")
             if save_temps:
                 log.info(f"{program_name} will not delete the directory on exit")
-        orig_dune_to_tmp_dune: dict[Path, Optional[Path]] = {}
+        orig_dune_to_tmp_dune: dict[Path, Path | None] = {}
         for should_be_dune_file in args.dune_files:
             orig_dune_file = get_dune_file_path(should_be_dune_file)
             if orig_dune_file is None:
