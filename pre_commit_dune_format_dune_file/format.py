@@ -50,7 +50,7 @@ _dune_file_names: Final[tuple[Path, Path]] = (
 
 def get_dune_file_path(arg: str) -> Path | None:
     path = Path(arg)
-    if path.isfile() and path.name in _dune_file_names:
+    if path.is_file() and path.name in _dune_file_names:
         if not path.access(os.R_OK):
             raise PermissionError(f"Can't read dune file '{path}'")
         if not path.access(os.W_OK):
@@ -70,8 +70,7 @@ class SaveableTempDir(TempDir):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls, *args, **cls.__super_kwargs__(**kwargs))
 
-    def __init__(self, *args, save=False, **kwargs) -> None:
-        super().__init__(*args, **self.__super_kwargs__(**kwargs))
+    def __init__(self, save=False) -> None:
         self._save = save
 
     def __exit__(self, exc_type, exc_val, exc_tb) -> None:
